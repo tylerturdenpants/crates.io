@@ -206,6 +206,13 @@ export default function() {
         let user = schema.users.findBy({ login });
         return user ? user : notFound();
     });
+
+    this.get('/me', (schema) => {
+        // magic number, create a user with this ID to have a current user logged in
+        let user = schema.users.find(9000);
+
+        return user ? user : notFound();
+    });
 }
 
 function notFound() {
